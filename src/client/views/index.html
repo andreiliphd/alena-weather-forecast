@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Weather Forecast App</title>
+        <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css"> 
+    </head>
+
+    <body>
+
+        <header>
+            <div class="logo">
+                Weather Forecast App
+            </div>
+            <div class="nav">
+                <a href="/">Main Page</a>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <input id="location" type="text" name="location" value=""placeholder="Location">
+                    <input id="date" type="text" name="date" value="" placeholder="Date">
+                    <input type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)">
+                </form>
+            </section>
+            <div class="weather_card" id="bright">
+                <div class="info_section">
+                    <img class="locandina" id="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Arc_Triomphe_%28square%29.jpg/1280px-Arc_Triomphe_%28square%29.jpg"/>
+                    <div class="info">
+                        <h1 id="city">Paris</h1>
+                        <h4 id="forecast_date">Sat Dec 12 2020                        </h4>
+                        <span id="temperature">8&#8451;</span>
+                        <p class="type">Temperature</p>
+                    </div>
+                </div>
+                <div class="blur_back bright_back"></div>
+            </div>                                 
+        </main>
+        <footer>
+            <p>&copy;Udacity Student</p>
+        </footer>
+        <script src="https://unpkg.com/js-datepicker"></script>
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>           
+    </body>
+</html>
