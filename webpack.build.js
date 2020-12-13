@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const DelWebpackPlugin = require('del-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
+
 
 module.exports = {
     entry: './src/client/index.js',
@@ -36,6 +38,7 @@ module.exports = {
             info: true,
             keepGeneratedAssets: true,
             allowExternal: false
-        })
+        }),
+        new Dotenv()
     ]
 }

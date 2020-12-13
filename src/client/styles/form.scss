@@ -2,11 +2,30 @@ form {
     border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
+    
+    #status {
+        font: 400 13.3333px Arial;
+        padding-top: 20px;
+        color: #67676d;
+    }
+    
+    div.radio {
+        display: flex;
+        flex-direction: column;
+        margin: 15px;
+        .label-group {
+            display: inline-block;
+            input {                
+                line-height: 16px;
+                margin: 10px 0;
+                vertical-align: middle;    
+            }
+            label {
+                font: 400 13.3333px Arial;
+                color: #67676d;
+            }
+        }
+        
+    }   
 }
 
-input {
-    padding: 5px 20px;
-    width: 100%;
-    line-height: 16px;
-    margin: 10px 0;
-}

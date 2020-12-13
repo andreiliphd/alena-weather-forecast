@@ -6,6 +6,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const DelWebpackPlugin = require('del-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
+
 
 console.log(path.resolve(__dirname, 'src/client/index.js'));
 module.exports = {
@@ -44,6 +46,7 @@ module.exports = {
             filename: path.resolve(__dirname, 'dist/index.html'),
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW(),
+        new Dotenv()
     ]
 }

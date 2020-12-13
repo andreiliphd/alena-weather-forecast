@@ -2,6 +2,10 @@
 import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
 import { getAPI } from './js/postRequest'
+import { getCoordinates } from './js/getCoordinates'
+import { getWeather } from './js/getWeather'
+import { getImage } from './js/getImage'
+import { saveToServer } from './js/saveToServer'
 
 // Import styles
 import "./styles/style.scss";
@@ -15,7 +19,11 @@ const picker = datepicker('#date', { minDate: new Date(Date.now()), maxDate: new
 export {
     checkForName,
     handleSubmit,
-    getAPI
+    getAPI,
+    getCoordinates,
+    getWeather,
+    getImage,
+    saveToServer
 }
    
 

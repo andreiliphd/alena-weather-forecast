@@ -23,7 +23,18 @@
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input id="location" type="text" name="location" value=""placeholder="Location">
                     <input id="date" type="text" name="date" value="" placeholder="Date">
+                    <div class="radio">
+                        <div class="label-group">
+                            <input id="javascript" type="radio" value="Use JavaScript" name="group" checked>
+                            <label for="javascript">Use browser to make API calls to third party service</label>
+                        </div>
+                        <div class="label-group">
+                            <input it="node" type="radio" value="Use Node JS" name="group">
+                            <label for="node">Use Node JS to make API calls to thrid party service</label>
+                        </div>                        
+                    </div>               
                     <input type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)">
+                    <div id="status"></div>
                 </form>
             </section>
             <!-- Create div where we will output an information -->

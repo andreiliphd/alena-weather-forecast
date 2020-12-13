@@ -37,6 +37,19 @@ function logServer() {
 // Starting listening for a port
 app.listen(8081, logServer);
 
+let projectData = {};
+app.post('/add', function (req, res) {
+    projectData = req.body;
+    console.log('Added Project Data to Server ', projectData);
+});
+
+app.get('/all', function (req, res) {
+    res.send(projectData);
+    console.log(projectData) 
+});
+
+
+
 // Setting up POST route
 app.post('/weather', function (req, res) {
     console.log(req.body);
