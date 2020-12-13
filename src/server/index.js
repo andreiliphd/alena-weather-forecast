@@ -1,3 +1,4 @@
+// Importing required dependencies
 var path = require('path');
 const express = require('express');
 var webpack = require('webpack');
@@ -8,46 +9,42 @@ const querystring = require('querystring');
 const axios = require('axios');
 require("dotenv").config();
 
+// Making an express app using imported function
 const app = express();
 
+// Define location of static assets
 app.use(express.static("dist"));
 
-console.log(path.resolve(__dirname, '../../dist'));
-
+// Add json functionality to express
 app.use(express.json());
+
+// Add dynamic recompile
 app.use(require("webpack-dev-middleware")(compiler, {
     outputFileSystem: path.resolve(__dirname, '../../dist'),
     writeToDisk: path.resolve(__dirname, '../../dist')
 }));
 
-var options = {
-    host: 'api.meaningcloud.com',
-    path: '/sentiment-2.1',
-    port: 443,
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    } 
-  };  
-
+// Setting up routes
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 });
 
-// designates what port the app will listen to for incoming requests
+// Logging server information
 function logServer() {
     console.log('Weather Forecast App is listening on port 8081!');
 }
 
+// Starting listening for a port
 app.listen(8081, logServer);
 
-
-app.post('/sentiment', function (req, res) {
+// Setting up POST route
+app.post('/weather', function (req, res) {
     console.log(req.body);
     let data = {};
     data['location'] = req.body.location;
     data['date'] = req.body.date;
     data['error'] = '';
+    // Getting lat and lon from Geoname API
     axios.get('http://api.geonames.org/searchJSON?q=' + req.body.location + '&maxRows=1&username=andreiliphd')
         .then(function (response) {
             
@@ -65,7 +62,7 @@ app.post('/sentiment', function (req, res) {
         res.send(data);
     })
     .then(function () {
-    // always executed
+        // Getting information about weather from Weatherbit API using lat and lon
         axios.get('http://api.weatherbit.io/v2.0/forecast/daily?'+ '&lat=' + data['lat'] + '&lon=' + data['lng'] + '&key=' + process.env.weatherbit)
         .then(function (response) {
             
@@ -79,7 +76,7 @@ app.post('/sentiment', function (req, res) {
             res.send(data);
         })
         .then(function () {
-            // always executed
+            // Getting picture city picture from Pixabay API
             axios.get('https://pixabay.com/api/videos/?key=' + process.env.pixabay +'&q=' + data['location'].replace(/\s/g, '+') + '&category=places')
             .then(function (response) {
                 // handle success
@@ -91,18 +88,13 @@ app.post('/sentiment', function (req, res) {
             // handle error
                 console.log(error);
                 data['img'] = 'https://askleo.askleomedia.com/wp-content/uploads/2004/06/no_image-600x490.jpg.webp';
-                data['error'] = 'Error has happened during making request to external API';
+                data['error'] = 'Picture not found in Pixabay API';
                 res.send(data);
             })
             .then(function () {
             // always executed
                 res.send(data);
         });
-
-
         });
-
-    });
-    console.log('http://api.weatherbit.io/v2.0/forecast/daily?'+ '&lat=' + data['lat'] + '&lon=' + data['lng'] + '&key=' + process.env.weatherbit);
-    
+    });    
 });
