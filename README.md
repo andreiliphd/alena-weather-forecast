@@ -1,4 +1,4 @@
-# Sentiment Analysis App
+# Weather Forecast App
 
 ## Overview
 An app can make weather forecasts, get image of a city and get coordinates of the city(internally).
