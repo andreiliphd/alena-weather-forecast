@@ -2,6 +2,7 @@
 
 ## Overview
 An app can make weather forecasts, get image of a city and get coordinates of the city(internally).
+
 # Dependencies
 1. Build dependencies.
 ```
