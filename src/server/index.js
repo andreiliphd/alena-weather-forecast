@@ -41,6 +41,7 @@ let projectData = {};
 app.post('/add', function (req, res) {
     projectData = req.body;
     console.log('Added Project Data to Server ', projectData);
+    res.send(req.body);
 });
 
 app.get('/all', function (req, res) {
@@ -90,11 +91,11 @@ app.post('/weather', function (req, res) {
         })
         .then(function () {
             // Getting picture city picture from Pixabay API
-            axios.get('https://pixabay.com/api/videos/?key=' + process.env.pixabay +'&q=' + data['location'].replace(/\s/g, '+') + '&category=places')
+            axios.get('https://api.unsplash.com/search/photos?query=' + data['location'].replace(/\s/g, '+') + '&client_id=y9qmhW-78MRf7O9A8AO1ShX-cbXTIdEaeDIXcjy-45k')
             .then(function (response) {
                 // handle success
                 console.log(response.data);
-                data['img'] = response.data.hits[0].userImageURL;
+                data['img'] = response.data.results[2].urls.small;
                 console.log(data);
             })
             .catch(function (error) {
