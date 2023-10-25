@@ -1,11 +1,8 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const DelWebpackPlugin = require('del-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
 
 
@@ -14,12 +11,21 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/client/index.js'),
     mode: 'development',
     optimization: {
-        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        minimizer: [],
         },        
     output: {
         libraryTarget: 'var',
         library: 'Client'
     },  
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebPackPlugin({
+            template: path.resolve(__dirname, 'src/client/views/index.html'),
+            filename: path.resolve(__dirname, 'dist/index.html'),
+        }),
+        new WorkboxPlugin.GenerateSW(),
+        new Dotenv()
+    ],
     module: {
         rules: [
             {
@@ -28,25 +34,9 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
-                test: /\.scss$/,
-                use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-            }                        ]
-    },
-    plugins: [
-        new DelWebpackPlugin({
-            include: ['**'],
-            exclude: ['test.js'],
-            info: true,
-            keepGeneratedAssets: true,
-            allowExternal: false
-          }),
-        new MiniCssExtractPlugin({ filename: "[name].css" }),
-        new HtmlWebPackPlugin({
-            template: path.resolve(__dirname, 'src/client/views/index.html'),
-            filename: path.resolve(__dirname, 'dist/index.html'),
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new WorkboxPlugin.GenerateSW(),
-        new Dotenv()
-    ]
+                test: /\.(s(a|c)ss)$/,
+                use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
+             }
+           ]
+    }
 }
