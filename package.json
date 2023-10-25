@@ -17,7 +17,7 @@
     "dotenv": "^8.2.0",
     "nodemon": "2.0.4",
     "webpack": "5.89.0",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "5.1.4",
     "js-datepicker": "5.16.0",
     "axios": "1.5.1",
     "dotenv-webpack": "3.0.0"
