@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const DelWebpackPlugin = require('del-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
@@ -13,7 +12,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/client/index.js'),
     mode: 'development',
     optimization: {
-        minimizer: [new TerserPlugin({})],
+        minimizer: [],
         },        
     output: {
         libraryTarget: 'var',
