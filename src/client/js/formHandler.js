@@ -29,7 +29,7 @@ function handleSubmit(event) {
                 // Updating UI
                 document.getElementById('city').innerHTML = res.location;
                 document.getElementById('forecast_date').innerHTML = res.date;
-                document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + '&#8451;';
+                document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + <sup>o</sup>C;
                 document.getElementById('image').src = res.img;
                 Client.saveToServer(res);
         });
@@ -54,7 +54,7 @@ function handleSubmit(event) {
                 // Updating UI
                 document.getElementById('city').innerHTML = res.location;
                 document.getElementById('forecast_date').innerHTML = res.date;
-                document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + '&#8451;';
+                document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + <sup>o</sup>C;
                 document.getElementById('image').src = res.img;
         })        
     }

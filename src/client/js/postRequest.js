@@ -2,6 +2,7 @@
 async function getAPI(sendData) {
     const request = await fetch('/weather', {
     method: 'POST', 
+    mode: "cors", // no-cors, *cors, same-origin
     credentials: 'same-origin', 
     headers: {
         'Content-Type': 'application/json',
