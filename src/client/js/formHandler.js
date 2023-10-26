@@ -11,6 +11,7 @@ function handleSubmit(event) {
     } else {
         document.getElementById('status').innerHTML = '';
     }
+
     // Checking that entered values are correct
     if (document.getElementById('javascript').checked) {
         if (Client.checkForName(location)) {
@@ -27,15 +28,30 @@ function handleSubmit(event) {
                 let date = startDate - Date.now();            
                 let dateDaysDiff = Math.ceil(date / (1000 * 60 * 60 * 24));
                 // Updating UI
-                document.getElementById('city').innerHTML = res.location;
-                document.getElementById('forecast_date').innerHTML = res.date;
-                document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + "<sup>o</sup>C";
-                document.getElementById('image').src = res.img;
+                try {
+                    document.getElementById('city').innerHTML = res.location;
+                } catch (error) {
+                    console.log(error);
+                }
+                try {
+                    document.getElementById('forecast_date').innerHTML = res.date;
+                } catch (error) {
+                    console.log(error);
+                }
+                try {
+                    document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + "<sup>o</sup>C";
+                } catch (error) {
+                    console.log(error);
+                }
+                try {
+                      document.getElementById('image').src = res.img;
+                } catch (error) {
+                    console.log(error);
+                }
                 Client.saveToServer(res);
         });
         }
-        
-        }
+    }
      else {
         if (Client.checkForName(location)) {
             let data = {};
@@ -46,19 +62,37 @@ function handleSubmit(event) {
             Client.getAPI(data)
             .then(function(res) {
                 console.log(res);
+
                 // Parsing date
                 let startDate = Date.parse(document.getElementById('date').value);
+
                 // Calculating date
                 let date = startDate - Date.now();            
                 let dateDaysDiff = Math.ceil(date / (1000 * 60 * 60 * 24));
+
                 // Updating UI
-                document.getElementById('city').innerHTML = res.location;
-                document.getElementById('forecast_date').innerHTML = res.date;
-                document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + "<sup>o</sup>C";
-                document.getElementById('image').src = res.img;
+                try {
+                    document.getElementById('city').innerHTML = res.location;
+                } catch (error) {
+                    console.log(error);
+                }
+                try {
+                    document.getElementById('forecast_date').innerHTML = res.date;
+                } catch (error) {
+                    console.log(error);
+                }
+                try {
+                    document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + "<sup>o</sup>C";
+                } catch (error) {
+                    console.log(error);
+                }
+                try {
+                    document.getElementById('image').src = res.img;
+                } catch (error) {
+                    console.log(error);
+                }
         })        
-    }
-    
+    }    
 }
 }
 
