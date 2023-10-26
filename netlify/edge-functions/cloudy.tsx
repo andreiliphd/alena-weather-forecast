@@ -32,13 +32,13 @@ export default async (request, context) => {
     console.log(wbit);
     data['weather'] = wbit.data;
     l
-    et splg = await getData('https://api.unsplash.com/search/photos?query=' + data['location'] + '&client_id=y9qmhW-78MRf7O9A8AO1ShX-cbXTIdEaeDIXcjy-45k')
+    let splg = await getData('https://api.unsplash.com/search/photos?query=' + data['location'] + '&client_id=y9qmhW-78MRf7O9A8AO1ShX-cbXTIdEaeDIXcjy-45k')
     console.log(splg);
     data['img'] = splg.results[2].urls.small; 
     console.log(data);
     console.log("fin");
 
-    return new Response(JSON.parse(data), {"status": 200});    
+    return new Response(JSON.stringify(data), {"status": 200});    
 };
 
 export const config = {
