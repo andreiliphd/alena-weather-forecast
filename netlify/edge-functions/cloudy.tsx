@@ -31,7 +31,6 @@ export default async (request, context) => {
     let wbit = await getData('http://api.weatherbit.io/v2.0/forecast/daily?'+ '&lat=' + data['lat'] + '&lon=' + data['lng'] + '&key=' + "d4c9f9c4f54842ac8faa3085cfbb3e1e")
     console.log(wbit);
     data['weather'] = wbit.data;
-    l
     let splg = await getData('https://api.unsplash.com/search/photos?query=' + data['location'] + '&client_id=y9qmhW-78MRf7O9A8AO1ShX-cbXTIdEaeDIXcjy-45k')
     console.log(splg);
     data['img'] = splg.results[2].urls.small; 
