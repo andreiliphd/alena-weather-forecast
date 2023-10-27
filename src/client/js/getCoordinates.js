@@ -3,7 +3,7 @@ const getCoordinates = async (incoming) => {
     console.log(incoming);
     let res;
     try {
-        res = await fetch('http://api.geonames.org/searchJSON?' +'&q='+incoming['location']+'&username=andreiliphd'); 
+        res = await fetch('https://api.geonames.org/searchJSON?' +'&q='+incoming['location']+'&username=andreiliphd'); 
     } catch (error) {
         console.log(error);
     }
