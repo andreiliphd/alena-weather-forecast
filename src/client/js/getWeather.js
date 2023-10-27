@@ -13,7 +13,7 @@ const getWeather = async (incoming) => {
         return incoming;
     } catch (error) {
         console.log("error",error);
-        return false;
+        return incoming;
     }
 }
 

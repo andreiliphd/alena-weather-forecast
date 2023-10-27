@@ -6,7 +6,7 @@ const getCoordinates = async (incoming) => {
     } catch (error) {
         console.log(error);
     }
-    
+
     try {
         const data = await res.json();
         console.log(data);
@@ -15,7 +15,7 @@ const getCoordinates = async (incoming) => {
         return incoming
     } catch (error) {
         console.log("error",error);
-        return false;
+        return incoming;
     }
 }
 
