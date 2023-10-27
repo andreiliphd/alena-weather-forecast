@@ -2,8 +2,16 @@ const getCoordinates = async (incoming) => {
     console.log('getCoordinates');
     console.log(incoming);
     let res;
-    try {
-        res = await fetch('https://api.geonames.org/searchJSON?' +'&q='+incoming['location']+'&username=andreiliphd'); 
+    try {  
+        res = await fetch('https://api.geonames.org/searchJSON?' +'&q='+incoming['location']+'&username=andreiliphd', {
+            method: "GET", // *GET, POST, PUT, DELETE, etc.
+            mode: "cors", // no-cors, *cors, same-origin
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+              "Content-Type": "application/json",
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }); 
     } catch (error) {
         console.log(error);
     }
