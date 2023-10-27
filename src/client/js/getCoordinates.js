@@ -1,5 +1,12 @@
-const getCoordinates = async (incoming) => {    
-    const res = await fetch('http://api.geonames.org/searchJSON?' +'&q='+incoming['location']+'&username=andreiliphd'); 
+const getCoordinates = async (incoming) => {   
+    console.log('getCoordinates');
+    console.log(incoming);
+    try {
+        const res = await fetch('http://api.geonames.org/searchJSON?' +'&q='+incoming['location']+'&username=andreiliphd'); 
+    } catch (error) {
+        console.log(error);
+    }
+    
     try {
         const data = await res.json();
         console.log(data);

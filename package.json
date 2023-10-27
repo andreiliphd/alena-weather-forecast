@@ -19,7 +19,6 @@
     "nodemon": "2.0.4",
     "node": "21.0.0",
     "sass-loader": "13.3.2",
-    "node-sass": "9.0.0",
     "webpack": "5.89.0",
     "webpack-cli": "5.1.4",
     "js-datepicker": "5.16.0",
