@@ -1,8 +1,9 @@
 const getWeather = async (incoming) => {  
     console.log('Data from server ');
     console.log(incoming);
+    let res;
     try {
-        const res = await fetch('https://api.weatherbit.io/v2.0/forecast/daily' + '?lat=' + incoming['lat'] + '&lon=' + incoming['lng'] + '&key=' + "d4c9f9c4f54842ac8faa3085cfbb3e1e"); 
+        res = await fetch('https://api.weatherbit.io/v2.0/forecast/daily' + '?lat=' + incoming['lat'] + '&lon=' + incoming['lng'] + '&key=' + "d4c9f9c4f54842ac8faa3085cfbb3e1e"); 
     } catch (error) {
         console.log(error);
     }

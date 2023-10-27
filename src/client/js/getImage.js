@@ -1,8 +1,9 @@
 const getImage = async (incoming) => {    
     console.log("getImage");
     console.log(incoming);
+    let res;
     try {
-        const res = await fetch('https://api.unsplash.com/search/photos?query=' + incoming['location'] + '&client_id=y9qmhW-78MRf7O9A8AO1ShX-cbXTIdEaeDIXcjy-45k'); 
+        res = await fetch('https://api.unsplash.com/search/photos?query=' + incoming['location'] + '&client_id=y9qmhW-78MRf7O9A8AO1ShX-cbXTIdEaeDIXcjy-45k'); 
     } catch (error) {
         console.log(error);
     }
