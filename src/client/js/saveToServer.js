@@ -1,5 +1,5 @@
 const saveToServer = async (data) => {
-    const response = await fetch('/add', {
+    const response = await fetch('/rain', {
         method: "POST",
         credentials: "same-origin",
         headers: {
