@@ -77,7 +77,7 @@ app.post('/weather', function (req, res) {
     })
     .then(function () {
         // Getting information about weather from Weatherbit API using lat and lon
-        axios.get('http://api.weatherbit.io/v2.0/forecast/daily?'+ '&lat=' + data['lat'] + '&lon=' + data['lng'] + '&key=' + process.env.weatherbit)
+        axios.get('http://api.weatherbit.io/v2.0/forecast/daily?'+ '&lat=' + data['lat'] + '&lon=' + data['lng'] + '&key=' + "d4c9f9c4f54842ac8faa3085cfbb3e1e")
         .then(function (response) {
             
             // handle success
