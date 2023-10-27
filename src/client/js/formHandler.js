@@ -29,22 +29,22 @@ function handleSubmit(event) {
                 let dateDaysDiff = Math.ceil(date / (1000 * 60 * 60 * 24));
                 // Updating UI
                 try {
-                    document.getElementById('city').innerHTML = res.location;
+                    if (res.location) document.getElementById('city').innerHTML = res.location;
                 } catch (error) {
                     console.log(error);
                 }
                 try {
-                    document.getElementById('forecast_date').innerHTML = res.date;
+                    if (res.date) document.getElementById('forecast_date').innerHTML = res.date;
                 } catch (error) {
                     console.log(error);
                 }
                 try {
-                    document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + "<sup>o</sup>C";
+                    if (res.temp) document.getElementById('temperature').innerHTML = res.weather.data[dateDaysDiff].temp + "<sup>o</sup>C";
                 } catch (error) {
                     console.log(error);
                 }
                 try {
-                      document.getElementById('image').src = res.img;
+                    if (res.img) document.getElementById('image').src = res.img;
                 } catch (error) {
                     console.log(error);
                 }
