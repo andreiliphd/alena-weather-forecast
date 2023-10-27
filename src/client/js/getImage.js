@@ -6,7 +6,7 @@ const getImage = async (incoming) => {
     } catch (error) {
         console.log(error);
     }
-    
+
     try {
         const data = await res.json();
         console.log(data);
@@ -14,7 +14,7 @@ const getImage = async (incoming) => {
         return incoming;
     } catch (error) {
         console.log("error",error);
-        return false;
+        return incoming;
     }
 }
 
