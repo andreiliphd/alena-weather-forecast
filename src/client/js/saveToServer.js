@@ -1,12 +1,23 @@
 const saveToServer = async (data) => {
-    const response = await fetch('/rain', {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data),
-    });
+    let response;
+    if (parseFloat(toString(document.getElementById('temperature').innerHTML)) < 13.45) {
+        const response = await fetch('/rainy', {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        });} else {
+        const response = await fetch('/sunny', {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        }); 
+    }
     try {
         const newData = await response.json();
         return newData;
